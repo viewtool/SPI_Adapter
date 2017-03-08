@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2014/03/05 16:47:31.085,=C:\Users\Administrator\Documents\RAD Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>2014/03/05 16:47:31.089,=C:\Users\Administrator\Documents\RAD Studio\Projects\File1.cpp</Transaction>
+    <Transaction>2014/03/05 16:47:59.268,E:\Projects\Work\vt_ginkgo\truck\Ginkgo Application Example\C++ Builder\Ginkgo SPI\C++Builder_USB_SPI_SpeedTest\USB_SPI_SpeedTest.cpp=C:\Users\Administrator\Documents\RAD Studio\Projects\File1.cpp</Transaction>
+    <Transaction>2014/03/05 16:48:03.147,E:\Projects\Work\vt_ginkgo\truck\Ginkgo Application Example\C++ Builder\Ginkgo SPI\C++Builder_USB_SPI_SpeedTest\USB_SPI_SpeedTest.h=C:\Users\Administrator\Documents\RAD Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>2014/03/05 16:48:06.883,E:\Projects\Work\vt_ginkgo\truck\Ginkgo Application Example\C++ Builder\Ginkgo SPI\C++Builder_USB_SPI_SpeedTest\USB_SPI_SpeedTest.cbproj=C:\Users\Administrator\Documents\RAD Studio\Projects\Project1.cbproj</Transaction>
+    <Transaction>2014/03/05 16:48:13.326,=E:\Projects\Work\vt_ginkgo\truck\Ginkgo Application Example\C++ Builder\Ginkgo SPI\C++Builder_USB_SPI_SpeedTest\ControlSPI.h</Transaction>
+    <Transaction>2014/03/05 16:48:13.339,=E:\Projects\Work\vt_ginkgo\truck\Ginkgo Application Example\C++ Builder\Ginkgo SPI\C++Builder_USB_SPI_SpeedTest\ErrorType.h</Transaction>
+    <Transaction>2014/03/05 16:48:19.079,=E:\Projects\Work\vt_ginkgo\truck\Ginkgo Application Example\C++ Builder\Ginkgo SPI\C++Builder_USB_SPI_SpeedTest\Lib\Ginkgo_Driver.lib</Transaction>
+  </Transactions>
+</BorlandProject>

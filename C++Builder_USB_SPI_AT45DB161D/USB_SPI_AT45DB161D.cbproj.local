@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2014/03/05 16:35:59.733,=C:\Users\Administrator\Documents\RAD Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>2014/03/05 16:35:59.737,=C:\Users\Administrator\Documents\RAD Studio\Projects\File1.cpp</Transaction>
+    <Transaction>2014/03/05 16:36:27.883,E:\Projects\Work\vt_ginkgo\truck\Ginkgo Application Example\C++ Builder\Ginkgo SPI\C++Builder_USB_SPI_AT45DB161D\USB_SPI_AT45DB161D.cpp=C:\Users\Administrator\Documents\RAD Studio\Projects\File1.cpp</Transaction>
+    <Transaction>2014/03/05 16:36:32.274,E:\Projects\Work\vt_ginkgo\truck\Ginkgo Application Example\C++ Builder\Ginkgo SPI\C++Builder_USB_SPI_AT45DB161D\USB_SPI_AT45DB161D.h=C:\Users\Administrator\Documents\RAD Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>2014/03/05 16:36:36.073,E:\Projects\Work\vt_ginkgo\truck\Ginkgo Application Example\C++ Builder\Ginkgo SPI\C++Builder_USB_SPI_AT45DB161D\USB_SPI_AT45DB161D.cbproj=C:\Users\Administrator\Documents\RAD Studio\Projects\Project1.cbproj</Transaction>
+    <Transaction>2014/03/05 16:36:42.633,=E:\Projects\Work\vt_ginkgo\truck\Ginkgo Application Example\C++ Builder\Ginkgo SPI\C++Builder_USB_SPI_AT45DB161D\ControlSPI.h</Transaction>
+    <Transaction>2014/03/05 16:36:42.636,=E:\Projects\Work\vt_ginkgo\truck\Ginkgo Application Example\C++ Builder\Ginkgo SPI\C++Builder_USB_SPI_AT45DB161D\ErrorType.h</Transaction>
+    <Transaction>2014/03/05 16:36:47.857,=E:\Projects\Work\vt_ginkgo\truck\Ginkgo Application Example\C++ Builder\Ginkgo SPI\C++Builder_USB_SPI_AT45DB161D\Lib\Ginkgo_Driver.lib</Transaction>
+  </Transactions>
+</BorlandProject>

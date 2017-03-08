@@ -1,0 +1,26 @@
+#pragma hdrstop
+#pragma argsused
+
+#include <tchar.h>
+#include <stdio.h>
+#include "ControlSPI.h"
+
+#define FLASH_CHREAD		0x0B
+#define FLASH_CLREAD		0x03
+#define FLASH_PREAD			0xD2
+
+#define FLASH_BUFWRITE1		0x84
+#define FLASH_IDREAD		0x9F
+#define FLASH_STATUS		0xD7
+#define PAGE_ERASE			0x81
+#define PAGE_READ			0xD2
+#define MM_PAGE_TO_B1_XFER	0x53					// 将主存储器的指定页数据加载到第一缓冲区
+#define BUFFER_2_WRITE		0x87					// 写入第二缓冲区
+#define BUFFER_1_READ		0xD4					// 读入第一缓冲区
+#define B2_TO_MM_PAGE_PROG_WITH_ERASE		0x86	// 将第二缓冲区的数据写入主存储器（擦除模式）
+#define B2_TO_MM_PAGE_PROG_WITHOUT_ERASE	0x89	// 将第二缓冲区的数据写入主存储器（非擦除模式）
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+	return 0;
+}
