@@ -1,0 +1,2 @@
+# SPI_SST25VF032B
+A LinuxGCC project to test SST25VF032B.
