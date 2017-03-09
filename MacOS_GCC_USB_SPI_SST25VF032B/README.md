@@ -1,0 +1,2 @@
+# SPI_SST25VF032B
+A MacOS project to test SST25VF032B.
