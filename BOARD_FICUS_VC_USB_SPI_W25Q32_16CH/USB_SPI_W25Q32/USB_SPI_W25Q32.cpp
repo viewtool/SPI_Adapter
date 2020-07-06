@@ -16,17 +16,65 @@
 */
 
 /*
+   A demo program for 16 channel SPI control with:
+   HW: Ginkgo Ficus (STM32F105VCT on board)
+   FW: >= 
+               Product name : Ginkgo-I2C&SPI&CAN-Adaptor
+               Firmware version : 3.0.8
+               Hardware version : 2.1.0
+   IDE: VS2010 (or above)
 
-Hardware Connection
-W25Q32      Ginkgo USB-SPI Adapter
-1.SI		<-->  SPI_MOSI(Pin17)
-2.SCK		<-->  SPI_SCK(Pin13)
-3.RESET		<-->  VCC(Pin2)
-4.CS		<-->  SPI_SEL0(Pin11)
-5.WP	    <-->  VCC(Pin2)
-6.VCC	    <-->  VCC(Pin2)
-7.GND	    <-->  GND(Pin19/Pin20)
-8.SO	    <-->  SPI_MISO(Pin15)
+   Ginkgo Ficus:
+   http://www.viewtool.com/index.php/en/14-2016-07-26-07-18-35/273-ginkgo3-i2c-spi-can-adapter
+   
+   Pin layout and definition:
+   http://www.viewtool.com/demo/STM32/Ficus_document_html/index.html
+
+   Ginkgo Ficus lead out 100% chip's resource for usage, for GPIO, it's more than 16 channel could be used. The demo shows defined pin number's usage
+   It could be used with I2C, GPIO, CAN (driver module required) simultaneously.
+
+   PIN definition rule and one example: 
+   J8_P2_SPI0_MISO J8_P4_SPI0_MOSI J18_P3_SPI0_CLK 
+   (1)  J8_P8_SPI0_NSS0 
+   (2)  J50_P4_SPI0_NSS1
+   (3)  J50_P6_SPI0_NSS2 
+   (4)  J50_P8_SPI0_NSS3
+   (5)  J50_P10_SPI0_NSS4
+   (6)  J50_P12_SPI0_NSS5 
+   (7)  J50_P14_SPI0_NSS6
+   (8)  J50_P16_SPI0_NSS7
+   (9)  J8_P7_SPI1_NSS8 
+   (10) J50_P3_SPI1_NSS9
+   (11) J50_P3_SPI1_NSS10
+   (12) J50_P3_SPI1_NSS11
+
+   1. socket definition: 
+   J8 definition example (see above link for detail): 
+   GND          1  2     P1  GPIOE_5    <--------------------- socket pin name for J15_P1_GPIO
+   GND          3  4     P2  GPIOE_6  
+   GND          5  6     P3  GPIOC_13  
+   GPIOE_2  P4  7  8     P5  GPIOC_0  
+   GPIOC_1  P6  9  10    P7  GPIOA_2  
+   GPIOC_2  P8  11  12   P9  GPIOA_3  
+   GND  13      14  P10      GPIOE_3  
+   GND  15      16  P11      GPIOE_4 
+
+
+   2. GPIO pin macro definitoin used in all of ficus board related programs:
+   J15_P1_GPIO:  --------> GPIO pin macro defintion
+   |   |   |____ usage: GPIO, fixed 
+   |   |________ pinout index (at this socket), P1: index = 1, it's GPIOE_5 @ socket num 2 position
+   |____________ FICUS board socket number (see above pin layout for more detail), J15: 2x8 pinout socket
+
+   GPIOE_5: socket pinout name, equal to STM32FXXX standard GPIO pin definition: port = GPIOE, pin = GPIO_PIN_5
+       | |____ pin index: 5  = GPIO_PIN_5
+	   |______ port index: E = GPIOE
+
+   3. check pin macro defition in func_map.h:
+   #define J15_P1_GPIO  (VGI_GPIO_PORTE|VGI_GPIO_PIN5)
+                                      |             |_____ GPIO_PIN_5
+									  |___________________ GPIOE
+
 
 */
 
@@ -39,8 +87,8 @@ W25Q32      Ginkgo USB-SPI Adapter
 uint8_t spi_channel[]={
 J8_P2_P4_P6_P8_SPI0_NSS0,J8_P2_P4_P6_J50_P4_SPI0_NSS1,J8_P2_P4_P6_J50_P6_SPI0_NSS2,J8_P2_P4_P6_J50_P8_SPI0_NSS3,
 J8_P2_P4_P6_J50_P10_SPI0_NSS4,J8_P2_P4_P6_J50_P12_SPI0_NSS5,J8_P2_P4_P6_J50_P14_SPI0_NSS6,J8_P2_P4_P6_J50_P16_SPI0_NSS7,
-J8_P1_P3_P5_P7_SPI1_NSS8,J8_P1_P3_P5_J50_P7_SPI1_NSS9,J8_P1_P3_P5_J50_P7_SPI1_NSS10,J8_P1_P3_P5_J50_P7_SPI1_NSS11,
-J8_P1_P3_P5_J50_P7_SPI1_NSS12,J8_P1_P3_P5_J50_P7_SPI1_NSS13,J8_P1_P3_P5_J50_P7_SPI1_NSS14,J8_P1_P3_P5_J50_P7_SPI1_NSS15,
+J8_P1_P3_P5_P7_SPI1_NSS8,J8_P1_P3_P5_J50_P3_SPI1_NSS9,J8_P1_P3_P5_J50_P5_SPI1_NSS10,J8_P1_P3_P5_J50_P7_SPI1_NSS11,
+J8_P1_P3_P5_J50_P9_SPI1_NSS12,J8_P1_P3_P5_J50_P11_SPI1_NSS13,J8_P1_P3_P5_J50_P13_SPI1_NSS14,J8_P1_P3_P5_J50_P15_SPI1_NSS15,
 };
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -66,7 +114,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	else {
 		printf("Open device success!\n");
 	}
-	for(j=0;j<16;j++)
+	for(j=0;j<12;j++)
 	{
 		// Device initialization
 		SPI_Init.ClockSpeed = 1125000;
@@ -85,7 +133,10 @@ int _tmain(int argc, _TCHAR* argv[])
 		}
 		else {
 			printf("Initialization device success!\n");
-		}
+		}	
+	}
+	for(j=0;j<12;j++)
+	{
 		// JEDEC ID
 		WriteDataTemp[0] = 0x9F;
 		ret = VSI_WriteReadBytes(VSI_USBSPI, 0, SPI_Init.SPIIndex, WriteDataTemp, 1, ReadDataTemp, 3);
@@ -148,7 +199,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		WriteDataTemp[2] = 0x00;
 		WriteDataTemp[3] = 0x00;
 		for (i = 4; i < (256 + 4); i++) {
-			WriteDataTemp[i] = i - 4;
+			WriteDataTemp[i] = i + j - 4;
 		}
 		ret = VSI_WriteBytes(VSI_USBSPI, 0, SPI_Init.SPIIndex, WriteDataTemp, 256 + 4);
 		if (ret != ERR_SUCCESS) {
